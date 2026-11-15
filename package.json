@@ -1,0 +1,11 @@
+{
+  "name": "mern-signup-application",
+  "version": "1.0.0",
+  "description": "Full-stack Sign Up application with React, Express, REST API, and MongoDB",
+  "scripts": {
+    "server": "cd backend && node server.js",
+    "client": "cd frontend && npm run dev"
+  },
+  "author": "",
+  "license": "ISC"
+}
