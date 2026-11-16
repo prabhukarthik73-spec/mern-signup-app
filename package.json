@@ -4,6 +4,7 @@
   "description": "Full-stack Sign Up application with React, Express, REST API, and MongoDB",
   "scripts": {
     "server": "cd backend && node server.js",
+    "show-users": "cd backend && node show-users.js",
     "client": "cd frontend && npm run dev"
   },
   "author": "",

@@ -5,6 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
+    "show-users": "node show-users.js",
     "test": "node test.js"
   },
   "dependencies": {

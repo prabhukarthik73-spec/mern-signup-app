@@ -64,6 +64,33 @@ app.get('/api/health', async (req, res) => {
   });
 });
 
+// GET /api/users - View all registered users in MongoDB
+app.get('/api/users', async (req, res) => {
+  try {
+    if (mongoose.connection.readyState === 1) {
+      // Fetch users from MongoDB (excluding password hash for clean display)
+      const users = await User.find({}, { password: 0 }).sort({ createdAt: -1 });
+      return res.json({
+        success: true,
+        source: 'MongoDB',
+        count: users.length,
+        users,
+      });
+    } else {
+      const users = fallbackUsers.map(({ password, ...u }) => u);
+      return res.json({
+        success: true,
+        source: 'In-Memory Fallback',
+        count: users.length,
+        users,
+      });
+    }
+  } catch (error) {
+    console.error('Error fetching users:', error);
+    return res.status(500).json({ success: false, message: error.message });
+  }
+});
+
 // POST /api/signup - Register a new user
 app.post('/api/signup', async (req, res) => {
   try {
